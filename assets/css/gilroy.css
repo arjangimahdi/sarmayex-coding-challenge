@@ -1,0 +1,59 @@
+/* light */
+@font-face {
+  font-family: "gilroy";
+  src: url("./../fonts/gilroy/eot/gilroy-light.eot");
+  src: local("gilroy light"), local("gilroy-light"),
+      url("./../fonts/gilroy/eot/gilroy-light.eot?#iefix") format("embedded-opentype"),
+      url("./../fonts/gilroy/woff/gilroy-light.woff") format("woff"),
+      url("./../fonts/gilroy/ttf/gilroy-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* normal */
+@font-face {
+  font-family: "gilroy";
+  src: url("./../fonts/gilroy/eot/gilroy-regular.eot");
+  src: local("gilroy regular"), local("gilroy-regular"),
+      url("./../fonts/gilroy/eot/gilroy-regular.eot?#iefix") format("embedded-opentype"),
+      url("./../fonts/gilroy/woff/gilroy-regular.woff") format("woff"),
+      url("./../fonts/gilroy/ttf/gilroy-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* medium */
+@font-face {
+  font-family: "gilroy";
+  src: url("./../fonts/gilroy/eot/gilroy-medium.eot");
+  src: local("gilroy medium"), local("gilroy-medium"),
+      url("./../fonts/gilroy/eot/gilroy-medium.eot?#iefix") format("embedded-opentype"),
+      url("./../fonts/gilroy/woff/gilroy-medium.woff") format("woff"),
+      url("./../fonts/gilroy/ttf/gilroy-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* semi bold */
+@font-face {
+  font-family: "gilroy";
+  src: url("./../fonts/gilroy/eot/gilroy-semibold.eot");
+  src: local("gilroy semibold"), local("gilroy-semibold"),
+      url("./../fonts/gilroy/eot/gilroy-semibold.eot") format("embedded-opentype"),
+      url("./../fonts/gilroy/woff/gilroy-semibold.woff") format("woff"),
+      url("./../fonts/gilroy/ttf/gilroy-semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* bold */
+@font-face {
+  font-family: "gilroy";
+  src: url("./../fonts/gilroy/eot/gilroy-bold.eot");
+  src: local("gilroy bold"), local("gilroy-bold"),
+      url("./../fonts/gilroy/eot/gilroy-bold.eot?#iefix") format("embedded-opentype"),
+      url("./../fonts/gilroy/woff/gilroy-bold.woff") format("woff"),
+      url("./../fonts/gilroy/ttf/gilroy-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}

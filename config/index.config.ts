@@ -1,0 +1,1 @@
+export const USDTPrice : number = 52500

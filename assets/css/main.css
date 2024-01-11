@@ -1,0 +1,17 @@
+@import "./gilroy.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    overflow-y: hidden;
+}
+
+* {
+    font-family: "gilroy", sans-serif;
+}
+
+img {
+    max-width: none !important;
+}
