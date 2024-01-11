@@ -1,7 +1,7 @@
 <template>
     <div class="app-progress-indicator w-full flex flex-col">
         <div class="flex flex-row justify-between items-center">
-            <button class="bg-transparent text-sm px-4 py-2 flex items-center" @click="goBackHandler" :class="[canNavigateBack ? 'text-gray-300' : 'text-gray-400 cursor-not-allowed']">
+            <button class="bg-transparent text-sm px-4 py-2 flex items-center" @click="goBackHandler" :class="[canNavigateBack ? 'text-gray-100' : 'text-gray-400 cursor-not-allowed']">
                 <Icon name="tabler:chevron-left" size="16" />
                 <span class="leading-none ml-1 block"> Back </span>
             </button>
@@ -15,7 +15,7 @@
                 >
             </div>
 
-            <button class="bg-transparent text-gray-400 text-sm px-4 py-2 flex items-center" @click="goNextHandler" :class="[canNavigateNext ? 'text-gray-300' : 'text-gray-400 cursor-not-allowed']">
+            <button class="bg-transparent text-sm px-4 py-2 flex items-center" @click="goNextHandler" :class="[canNavigateNext ? 'text-gray-100' : 'text-gray-400 cursor-not-allowed']">
                 <span class="leading-none mr-1 block"> Next </span>
                 <Icon name="tabler:chevron-right" size="16" />
             </button>

@@ -9,13 +9,17 @@
 <script setup lang="ts">
 // * store
 import { currencyStore } from "~/store/pages/currency.store";
-const { currencies, fetchCurrencies } = currencyStore();
+const { currencies, fetchCurrencies, selectedCurrency } = currencyStore();
 
 // * composables
 import { useProgressIndicator } from "~/composables/components/useProgressIndicator";
-const { activeStepId } = useProgressIndicator();
-
+const { activeStepId, canNavigateNext } = useProgressIndicator();
 activeStepId.value = 1;
+
+// * watch
+watch(selectedCurrency, (newValue) => {
+    canNavigateNext.value = newValue > 0
+})
 
 // * fetch currencies
 await fetchCurrencies();
