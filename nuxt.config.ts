@@ -6,6 +6,17 @@ export default defineNuxtConfig({
             autoprefixer: {},
         },
     },
-    modules: ['nuxt-icon'],
+    modules: ["nuxt-icon", "@vee-validate/nuxt"],
+
+    veeValidate: {
+        autoImports: true,
+        componentNames: {
+            Form: "VForm",
+            Field: "VField",
+            FieldArray: "VFieldArray",
+            ErrorMessage: "VErrorMessage",
+        },
+    },
+
     css: ["~/assets/css/main.css"],
 });

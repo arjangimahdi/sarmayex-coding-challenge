@@ -1,8 +1,8 @@
 <template>
     <div
-        :class="[selectedCurrency == item.id ? 'border border-cyan-700 bg-cyan-600' : 'bg-zinc-600']"
+        :class="[selectedCurrencyId == item.id ? 'border border-cyan-700 bg-cyan-600' : 'bg-zinc-600']"
         class="hover:bg-opacity-35 transition-all cursor-pointer bg-opacity-20 p-3 rounded-md"
-        @click="selectCurrencyHandler(item.id)"
+        @click="selectCurrencyHandler(item)"
     >
         <div class="flex flex-col">
             <div class="flex flex-row items-center text-white">
@@ -26,7 +26,7 @@ import type { CurrencyInterface } from "~/interfaces/data/currency.interface";
 
 // * store
 import { currencyStore } from "~/store/pages/currency.store";
-const { selectedCurrency } = currencyStore();
+const { selectedCurrencyId, selectedCurrencyItem } = currencyStore();
 
 // * interface
 interface Props {
@@ -37,12 +37,14 @@ interface Props {
 defineProps<Props>();
 
 // * methods
-const selectCurrencyHandler = (id: number) => {
-    if (id == selectedCurrency.value) {
-        selectedCurrency.value = 0;
+const selectCurrencyHandler = (currency: CurrencyInterface) => {
+    if (currency.id == selectedCurrencyId.value) {
+        selectedCurrencyId.value = 0;
+        selectedCurrencyItem.value = undefined
         return;
     }
-    selectedCurrency.value = id;
+    selectedCurrencyId.value = currency.id;
+    selectedCurrencyItem.value = currency;
 };
 </script>
 

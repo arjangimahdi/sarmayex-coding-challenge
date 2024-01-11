@@ -2,7 +2,8 @@ import type { CurrencyInterface } from "~/interfaces/data/currency.interface"
 
 export const currencyStore = () => {
   const currencies = useState<CurrencyInterface[]>("currencies", () => []);
-  const selectedCurrency = useState<number>("selectedCurrency", () => 0);
+  const selectedCurrencyId = useState<number>("selectedCurrencyId", () => 0);
+  const selectedCurrencyItem = useState<CurrencyInterface | undefined>("selectedCurrencyItem", () => undefined);
 
   const fetchCurrencies = async () => {
     const { data } = await useFetch('/api/currencies');
@@ -13,6 +14,7 @@ export const currencyStore = () => {
   return {
     currencies,
     fetchCurrencies,
-    selectedCurrency
+    selectedCurrencyId,
+    selectedCurrencyItem,
   }
 }

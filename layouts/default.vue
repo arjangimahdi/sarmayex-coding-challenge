@@ -3,7 +3,7 @@
         <AppHeader />
         <main class="container mx-auto px-4">
             <AppProgressIndicator class="my-4" />
-            <NuxtPage />
+            <NuxtPage class="mt-5" />
         </main>
     </div>
 </template>
