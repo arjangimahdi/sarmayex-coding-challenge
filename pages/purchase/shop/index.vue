@@ -4,7 +4,7 @@
         <div class="grid md:grid-cols-5 gap-3">
             <div class="col-span-2">
                 <AppInput
-                    v-model="pay"
+                    v-model="payAmount"
                     name="pay"
                     placeholder="Enter Value"
                     label="You Pay"
@@ -12,7 +12,7 @@
                     @input="calculateExchangeHandler('pay')"
                 >
                     <template #helper>
-                        <span class="text-gray-400 text-xs capitalize" v-if="pay > 9000">
+                        <span class="text-gray-400 text-xs capitalize" v-if="payAmount > 9000">
                             {{ payCurrencyConverter }} TMN
                         </span>
                     </template>
@@ -25,7 +25,7 @@
             </div>
             <div class="col-span-2">
                 <AppInput
-                    v-model="get"
+                    v-model="getAmount"
                     name="get"
                     placeholder="Enter Value"
                     label="You Get"
@@ -44,7 +44,9 @@
 <script setup lang="ts">
 // * store
 import { currencyStore } from "~/store/pages/currency.store";
+import { shopStore } from "~/store/pages/shop.store";
 const { selectedCurrencyItem } = currencyStore();
+const { getAmount, payAmount } = shopStore();
 
 // * config
 import { USDTPrice } from "~/config/index.config";
@@ -63,32 +65,44 @@ useHead({
     title: "Sarmayex - Shop",
 });
 
-// * refs
-const pay = ref<number | undefined>(50000);
-const get = ref<number | undefined>(0);
-
 // * initial calculation
-get.value = ((pay.value as number) / USDTPrice / selectedCurrencyItem.value?.value).toFixed(4);
+getAmount.value = ((payAmount.value as number) / USDTPrice / selectedCurrencyItem.value?.value).toFixed(4);
 
 // * computed properties
 const payCurrencyConverter = computed(() => {
-    let amount = pay.value;
-    const isNegative = (pay.value as number) < 0;
-    amount = Math.abs(amount as number);
-    const suffixes = ["", "thousand", "million", "billion"];
+    let amount: number = payAmount.value as number;
+    let result = "";
+    
 
-    let suffixIndex = 0;
-
-    while (amount >= 1000 && suffixIndex < suffixes.length - 1) {
-        amount /= 1000;
-        suffixIndex++;
+    if (amount >= 1000000000) {
+        const billions = Math.floor(amount / 1000000000);
+        amount %= 1000000000;
+        result += `${billions} billion `;
     }
 
-    const sign = isNegative ? "-" : "";
+    if (amount >= 1000000) {
+        const millions = Math.floor(amount / 1000000);
+        amount %= 1000000;
+        result += `${millions} million `;
+    }
 
-    const formattedNumber = amount.toFixed();
+    if (amount >= 1000) {
+        const thousands = Math.floor(amount / 1000);
+        amount %= 1000;
+        result += `${thousands} thousand `;
+    }
 
-    return sign + formattedNumber + " " + suffixes[suffixIndex];
+    if (amount >= 100) {
+        const hundreds = Math.floor(amount / 100);
+        amount %= 100;
+        result += `${hundreds} hundred `;
+    }
+
+    if (amount > 0) {
+        result += `${amount}`;
+    }
+
+    return result;
 });
 const amountPerCoin = computed(() => {
     return selectedCurrencyItem?.value?.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -96,8 +110,8 @@ const amountPerCoin = computed(() => {
 
 // * methods
 const calculateExchangeHandler = (type: "get" | "pay") => {
-    if (type == "pay") get.value = (pay.value / USDTPrice / selectedCurrencyItem.value?.value).toFixed(4);
-    else pay.value = get.value * selectedCurrencyItem.value?.value * USDTPrice;
+    if (type == "pay") getAmount.value = (payAmount.value / USDTPrice / selectedCurrencyItem.value?.value).toFixed(4);
+    else payAmount.value = getAmount.value * selectedCurrencyItem.value?.value * USDTPrice;
 };
 
 onMounted(() => {});
