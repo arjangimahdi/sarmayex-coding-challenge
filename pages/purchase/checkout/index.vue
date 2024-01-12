@@ -38,6 +38,7 @@
 // * meta
 definePageMeta({
     name: "checkout",
+    layout: 'dashboard',
     key: '3',
 });
 

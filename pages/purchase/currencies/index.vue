@@ -30,7 +30,8 @@ await fetchCurrencies();
 // * meta
 definePageMeta({
     name: "currency",
-    key: '1'
+    key: '1',
+    layout: 'dashboard'
 });
 
 // * head

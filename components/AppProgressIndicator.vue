@@ -98,7 +98,6 @@ const goBackHandler = () => {
 };
 
 onMounted(() => {
-    navigateTo("/purchase/currencies");
     initProgressIndicatorStepItems();
 });
 </script>

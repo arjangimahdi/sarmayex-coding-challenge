@@ -58,6 +58,7 @@ const { mobile } = useResponsive();
 definePageMeta({
     name: "shop",
     key: "2",
+    layout: 'dashboard'
 });
 
 // * head
